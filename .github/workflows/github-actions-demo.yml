@@ -15,8 +15,8 @@ jobs:
         aws-secret-access-key: "6vQl+MRrysoXf/9vev6BSRN61Vi/3mrwuEYW1BwQ"
         aws-region: us-east-2
 
-    - name: Login to Amazon ECR
-      id: login-ecr
-      uses: aws-actions/amazon-ecr-login@v1
-    
-    - run: echo "DEU BOM"
+      - name: Login to Amazon ECR
+        id: login-ecr
+        uses: aws-actions/amazon-ecr-login@v1
+      
+      - run: echo "DEU BOM"
