@@ -21,6 +21,6 @@ jobs:
         #   git checkout main 
         #   git pull origin main 
         #   echo "Finished"
-        run: |
+        script: |
             cd /var/www/ci-cd/
             git pull
