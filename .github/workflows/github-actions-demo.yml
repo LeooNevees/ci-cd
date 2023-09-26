@@ -14,6 +14,7 @@ jobs:
           aws-secret-access-key: 6vQl+MRrysoXf/9vev6BSRN61Vi/3mrwuEYW1BwQ
           aws-region: us-east-2
 
-      - name: Outra ação, se necessário
+      - name: Update Main
         run: |
-          echo "DEU BOM"
+          cd ~/ci-cd/ && git reset --hard && git checkout main && git pull origin main 
+          echo "Finished"

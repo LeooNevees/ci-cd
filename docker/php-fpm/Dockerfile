@@ -1,12 +1,6 @@
 FROM php:8.1-fpm
 
 ENV PHP_VERSION=8.1.8
-ENV USER=docker
-ENV UID=1000
-ENV GID=1000
-ENV USER_SYMFONY=symfonypermissions
-ENV UID_SYMFONY=1001
-ENV GID_SYMFONY=1001
 
 ARG APCU_VERSION=5.1.21
 
@@ -82,31 +76,6 @@ RUN curl -sL https://deb.nodesource.com/setup_16.x | bash - \
 	&& apt-get -y autoremove \
 	&& apt-get clean \
 	&& rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* \
-	# ADD GROUP USER DOCKER
-	&& addgroup \
-		--gid "${GID}" \
-		"${USER}" \
-	&& adduser \
-		--disabled-password \
-		--gecos "" \
-		--home "/var/www/html" \
-		--ingroup "$USER" \
-		--no-create-home \
-		--uid "$UID" \
-		"$USER" \
-	# ADD GROUP USER SYMFONYPERMISSIONS
-	&& addgroup \
-		--gid "${GID_SYMFONY}" \
-		"${USER_SYMFONY}" \
-	&& adduser \
-		--disabled-password \
-		--gecos "" \
-		--home "/var/www/html" \
-		--ingroup "$USER_SYMFONY" \
-		--no-create-home \
-		--uid "$UID_SYMFONY" \
-		"$USER_SYMFONY" \
-	&& usermod -a -G ${USER_SYMFONY} www-data \
 	&& rm -rf /usr/bin/php \
 	&& rm -rf /usr/bin/php8 \
 	&& ln -s /usr/local/bin/php /usr/bin/php \
