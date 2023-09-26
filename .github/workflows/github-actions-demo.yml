@@ -14,6 +14,8 @@ jobs:
           aws-secret-access-key: 6vQl+MRrysoXf/9vev6BSRN61Vi/3mrwuEYW1BwQ
           aws-region: us-east-2
 
+      - uses: actions/checkout@v2
+      
       - name: Update Main
         # run: |
         #   cd /home/ubuntu/ci-cd/
@@ -21,6 +23,6 @@ jobs:
         #   git checkout main 
         #   git pull origin main 
         #   echo "Finished"
-        script: |
+        run: |
             cd /var/www/ci-cd/
             git pull
