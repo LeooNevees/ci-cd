@@ -7,22 +7,13 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Configure AWS credentials
-        uses: aws-actions/configure-aws-credentials@v1
+      - name: Action Checkout
+      - uses: appleboy/ssh-action@master
         with:
-          aws-access-key-id: AKIA6ITFMYUANKSVSM6J
-          aws-secret-access-key: 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
-          aws-region: us-east-2
+          host: ec2-3-141-193-53.us-east-2.compute.amazonaws.com
+          key: AKIA6ITFMYUANKSVSM6J
+          username: ubuntu
 
-      - uses: actions/checkout@v2
-      
-      - name: Update Main
-        # run: |
-        #   cd /home/ubuntu/ci-cd/
-        #   git reset --hard
-        #   git checkout main 
-        #   git pull origin main 
-        #   echo "Finished"
-        run: |
+          script: |
             cd /var/www/ci-cd/
             git pull
