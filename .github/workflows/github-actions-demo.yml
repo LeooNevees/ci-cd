@@ -16,5 +16,8 @@ jobs:
 
       - name: Update Main
         run: |
-          cd ~/ci-cd/ && git reset --hard && git checkout main && git pull origin main 
+          cd ~/ci-cd/ 
+          git reset --hard
+          git checkout main 
+          git pull origin main 
           echo "Finished"
