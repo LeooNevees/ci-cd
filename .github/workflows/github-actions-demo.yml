@@ -8,12 +8,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - uses: appleboy/ssh-action@master
+      
+      - name: executing remote ssh commands using ssh key
+        uses: appleboy/ssh-action@v1.0.0
         with:
           host: "ec2-3-141-193-53.us-east-2.compute.amazonaws.com"
-          key: "AKIA6ITFMYUANKSVSM6J"
-          username: ubuntu
-
+          username: "ubuntu"
+          key: ${{ secrets.PRIVATE_KEY_RSA }}
           script: |
             cd /var/www/ci-cd/
             git pull
