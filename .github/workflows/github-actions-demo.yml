@@ -16,7 +16,6 @@ jobs:
 
       - name: Update Main
         run: |
-          cd /home/ubuntu/ci-cd/
           git reset --hard
           git checkout main 
           git pull origin main 
