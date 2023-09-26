@@ -15,8 +15,12 @@ jobs:
           aws-region: us-east-2
 
       - name: Update Main
+        # run: |
+        #   cd /home/ubuntu/ci-cd/
+        #   git reset --hard
+        #   git checkout main 
+        #   git pull origin main 
+        #   echo "Finished"
         run: |
-          git reset --hard
-          git checkout main 
-          git pull origin main 
-          echo "Finished"
+            cd /var/www/ci-cd/
+            git pull
