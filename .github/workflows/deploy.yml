@@ -9,14 +9,13 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       
-      - name: Configure AWS credentials
-        uses: aws-actions/configure-aws-credentials@v1
-        with:
-          aws-access-key-id: ${{ secrets.ACCESS_KEY }}
-          aws-secret-access-key: ${{ secrets.SECRET_KEY }}
-          aws-region: ${{ secrets.AWS_REGION }}
-      
       - name: executing remote ssh commands using ssh key
-        run: |
-          git pull origin main --no-ff
-          docker compose restart
+        uses: appleboy/ssh-action@v1.0.0
+        with:
+          host: ${{ secrets.AWS_HOST }}
+          username: ${{ secrets.AWS_USER }}
+          key: ${{ secrets.PRIVATE_KEY_RSA }}
+          script: |
+            cd /var/www/ci-cd/
+            git pull origin main --no-ff
+            docker compose restart
