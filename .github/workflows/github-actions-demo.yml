@@ -18,3 +18,4 @@ jobs:
           script: |
             cd /var/www/ci-cd/
             git pull origin main --no-ff
+            docker compose restart
