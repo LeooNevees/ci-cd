@@ -18,9 +18,6 @@ jobs:
       
       - name: executing remote ssh commands using ssh key
         run: |
-          echo "Hello, world!"
-
-        # run: |
-        #   cd /var/www/ci-cd/
-        #   git pull origin main --no-ff
-        #   docker compose restart
+          cd /var/www/ci-cd/
+          git pull origin main --no-ff
+          docker compose restart
