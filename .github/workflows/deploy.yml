@@ -12,16 +12,11 @@ jobs:
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v1
         with:
-          aws-access-key-id: "AKIA6ITFMYUANKSVSM6J"
-          aws-secret-access-key: "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"
-          aws-region: us-east-2
+          aws-access-key-id: ${{ secrets.ACCESS_KEY }}
+          aws-secret-access-key: ${{ secrets.SECRET_KEY }}
+          aws-region: ${{ secrets.AWS_REGION }}
       
       - name: executing remote ssh commands using ssh key
         run: |
           git pull origin main --no-ff
           docker compose restart
-
-        # run: |
-        #   cd /var/www/ci-cd/
-        #   git pull origin main --no-ff
-        #   docker compose restart
