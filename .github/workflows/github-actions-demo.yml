@@ -12,8 +12,8 @@ jobs:
       - name: executing remote ssh commands using ssh key
         uses: appleboy/ssh-action@v1.0.0
         with:
-          host: "ec2-18-227-166-10.us-east-2.compute.amazonaws.com"
-          username: "ubuntu"
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USER }}
           key: ${{ secrets.PRIVATE_KEY_RSA }}
           script: |
             cd /var/www/ci-cd/
