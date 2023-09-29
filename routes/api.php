@@ -19,5 +19,5 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 }); 
 
 Route::get('/test', function (Request $request) {
-    return "Chegou na api test";
+    return "Chegou na api teste";
 });
